@@ -1,0 +1,32 @@
+services:
+
+    # nginx:
+    #     container_name: nginx-container
+    #     build: ./nginx
+    #     restart: always
+    #     volumes:
+    #         - ../pos-user-service/dist:/var/www/html/public/user
+    #         - ./nginx/log:/var/log/nginx
+    #         - ./nginx/conf/:/etc/nginx/conf.d/
+    #         - ./certbot/www:/var/www/certbot/:ro
+    #         - ./certbot/conf/:/etc/nginx/ssl/:ro
+    #     ports:
+    #         - "80:80"
+    #         - "443:443"
+
+    user:
+        container_name: react
+        image: react-portfolio
+        restart: always
+        tty: true
+        volumes:
+            - .:/home/react-portfolio
+        ports:
+            - "5173:5173"
+
+    # certbot:
+    #     container_name: certbot-container
+    #     image: certbot/certbot:latest
+    #     volumes:
+    #         - ./certbot/www/:/var/www/certbot/:rw
+    #         - ./certbot/conf/:/etc/letsencrypt/:rw
